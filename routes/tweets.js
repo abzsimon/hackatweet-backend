@@ -22,8 +22,8 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/all', (req, res) => {
-    User.findOne({ token: req.body.token }).then((user) => {
+router.get('/all/:token', (req, res) => {
+    User.findOne({ token: req.params.token }).then((user) => {
         if (user === null) {
             res.json({ result: false, error: 'No user specified!' });
         } else {
