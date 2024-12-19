@@ -34,15 +34,20 @@ router.get('/all', (req, res) => {
     });
 })
 
-// router.delete('/delete', (req, res) => {
-//     const findTweet = Tweet.(e => e.author === req.body.author);
-
-//     if (searchedWeather) {
-//         weather = weather.filter(e => e.cityName !== req.params.cityName);
-//         res.json({ result: true, weather });
-//     } else {
-//         res.json({ result: false, error: 'City not found' });
-//     }
-// });
+router.delete('/:id', (req, res) => {
+    User.findOne({ token: req.body.token }).then((user) => {
+        if (user === null) {
+            res.json({ result: false, error: 'No user specified!' });
+        } else {
+            Tweet.findOneAndDelete({ _id: req.params.id }).then(deletedTweet => {
+                if (deletedTweet) {
+                    res.json({ result: true, message: 'Tweet successfully deleted!' });
+                } else {
+                    res.json({ result: false, error: 'Tweet not found!' });
+                }
+            });
+        }
+    });
+});
 
 module.exports = router;
