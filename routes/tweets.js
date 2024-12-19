@@ -34,15 +34,15 @@ router.get('/all', (req, res) => {
     });
 })
 
-router.delete('/delete', (req, res) => {
-    const findTweet = Tweet.(e => e.author === req.body.author);
+// router.delete('/delete', (req, res) => {
+//     const findTweet = Tweet.(e => e.author === req.body.author);
 
-    if (searchedWeather) {
-        weather = weather.filter(e => e.cityName !== req.params.cityName);
-        res.json({ result: true, weather });
-    } else {
-        res.json({ result: false, error: 'City not found' });
-    }
-});
+//     if (searchedWeather) {
+//         weather = weather.filter(e => e.cityName !== req.params.cityName);
+//         res.json({ result: true, weather });
+//     } else {
+//         res.json({ result: false, error: 'City not found' });
+//     }
+// });
 
 module.exports = router;
